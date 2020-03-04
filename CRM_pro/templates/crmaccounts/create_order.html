@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>New order</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    {#    {{ form }}#}
+
+    <center>
+        <div class="card-body">
+            <br>
+           <table>
+               <tbody>
+               <tr>
+
+                   <td id="cname" > Name:{{ form.customer }}</td><br>
+{#                   {% if form.customer != request.user %}#}
+{#                   #}
+{#                   {% endif %}#}
+                   <td onmouseover="getURL()">Product:{{ form.product }}</td><br>
+                   <td>Status: {{ form.status }}</td><br>
+               </tr>
+               </tbody>
+           </table>
+
+{#            Name: {{ request.user }}<br><br>#}
+{#            product: {{ form.product }}<br><br>#}
+{#            status: {{ form.status }}<br><br>#}
+<script>
+function getURL() {
+        var x="{{ request.user }}";
+        document.getElementById("cname").value=x;
+        console.log(x)
+
+    }
+    </script>
+
+{#    <button type="button" >Get Page URL</button>#}
+            <input type="submit" class="success"  onmouseover="getURL();" value="Save">
+        </div>
+    </center>
+    {% csrf_token %}
+</form>
+
+    {#</script>#}
+</body>
+</html>

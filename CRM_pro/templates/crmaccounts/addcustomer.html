@@ -1,0 +1,74 @@
+{% extends 'crmaccounts/base.html' %}
+<html>
+<head>
+    {% block title %}
+        <title>add customer</title>
+    {% endblock %}
+
+</head>
+<body>
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {#    {% for form in form %}#}
+        {##}
+        {#           Name: {{ form.cname }}#}
+        {#            Email:{{ form.email }}#}
+        {#            Mobile:{{ form.mobile }}#}
+        {##}
+        {#    {% endfor %}#}
+        <div class="container-fluid" style="margin-top: 5px">
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div class="card text-white text-center bg-dark">
+                        <div class="card-header">
+                            <h4 class="card-title">Customers List</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-borderd table-sm text-center bg-primary text-white">
+                                <thead>
+                                <tr>
+                                    <th>go</th>
+                                    <th>Name</th>
+                                    <th>Mobile</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for customer in customers %}
+
+                                    <tr>
+
+                                        <td><a href="{% url 'customer' customer.cid %}" class="text-white">view </a></td>
+                                        <td>{{ customer.cid }}</td>
+                                        <td><h5 style="padding: 2px">{{ customer.cname.capitalize }}</h5></td>
+                                        <td>{{ customer.mobile }}</td>
+
+                                    </tr>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <center>
+                    <div class="card-body">
+                        <br>
+                        ID:{{ form.cid}}<br><br>
+                        Name: {{ form.cname }}<br><br>
+                        Email: {{ form.email }}<br><br>
+                        Mobile: {{ form.mobile }}<br><br>
+                        <input type="submit" class="success" value="Save">
+                    </div>
+                </center>
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+</body>
+</html>
